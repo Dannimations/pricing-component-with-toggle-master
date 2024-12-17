@@ -1,0 +1,209 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+:root{
+    --Linear-Gradient-Start: hsl(236, 72%, 79%);
+    --Linear-Gradient-End: hsl(237, 63%, 64%);
+    --Very-Light-Grayish-Blue: hsl(240, 78%, 98%);
+    --Light-Grayish-Blue: hsl(234, 14%, 74%);
+    --Grayish-Blue: hsl(233, 13%, 49%);
+    --Dark-Grayish-Blue: hsl(232, 13%, 33%);
+}
+
+a{
+    text-decoration: none;
+    display: block;
+}
+
+.toggleSwitch{
+    display: inline-block;
+    position: relative;
+}
+
+.toggleSwitch .toggleInput{
+    visibility: hidden;
+}
+
+.toggleSwitch .toggleLabel{
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--Linear-Gradient-Start) 0%, 
+    var(--Linear-Gradient-End) 100%);
+    width: 50px;
+    height: 28px;
+    position: absolute;
+    top: -3px;
+    left: -17px;
+    border-radius: 2rem;
+    transition: background-color 200ms;
+}
+
+.toggleSwitch .toggleLabel::before{
+    content: '';
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    border-radius: 50%;
+    transition: transform 200ms; 
+}
+
+.toggleSwitch .toggleInput:checked + .toggleLabel::before{
+    transform: translate(22px);
+}
+
+body{
+    background-color: var(--Very-Light-Grayish-Blue);
+    min-height: 100vh;
+    font-family: 'Montserrat', 'Segoe UI';
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+}
+
+.component{
+    text-align: center;
+    position: relative;
+}
+
+img{
+    position: absolute;
+    z-index: 0;
+}
+
+.topImg{
+    top: -200px;
+    right: -190px;
+}
+
+.bottomImg{
+    bottom: -145px;
+    left: -200px;
+}
+
+.component .toggleContainer{
+    margin: 2rem auto;
+    max-width: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.component .cardsGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.component .cardsGrid .card{
+    background-color: white;
+    padding: 1.5rem;
+    font-weight: 700;
+}
+
+.component .cardsGrid .card:nth-child(2){
+    background: linear-gradient(120deg, var(--Linear-Gradient-Start) 0%,
+    var(--Linear-Gradient-End) 100%);
+    color: var(--Very-Light-Grayish-Blue);
+    padding: 3rem 1.5rem;
+    border-radius: .5rem;
+}
+
+.component .cardsGrid .card:nth-child(1),
+.component .cardsGrid .card:nth-child(3){
+    height: min-content;
+}
+
+.component .cardsGrid .card h3{
+    margin-bottom: 1rem;
+}
+
+.component .cardsGrid .card .cost{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+}
+
+.component .cardsGrid .card .cost span{
+    font-size: 3rem;
+}
+
+.component .cardsGrid .card .benefits li{
+    padding: 1rem 3rem;
+    border-bottom: 1px solid var(--Linear-Gradient-Start);
+}
+
+.component .cardsGrid .card:nth-child(2) .cost{
+    min-width: 285px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--Very-Light-Grayish-Blue);
+}
+
+.component .cardsGrid .card:nth-child(2) .benefits li{
+    padding: 1rem 3rem;
+    border-bottom: 1px solid white;
+}
+
+.component .cardsGrid .card:nth-child(1) .cost,
+.component .cardsGrid .card:nth-child(3) .cost{
+    padding: 1rem 3rem;
+    border-bottom: 1px solid var(--Linear-Gradient-Start);
+}
+
+.component .cardsGrid .card .linkBtn{
+    background: linear-gradient(90deg, var(--Linear-Gradient-Start) 0%, 
+    var(--Linear-Gradient-End) 100%);
+    color: white;
+    width: 100%;
+    padding: .5rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    border-radius: .25rem;
+}
+
+.component .cardsGrid .card .linkBtn:hover{
+    background-color: transparent;
+    color: var(--Linear-Gradient-End);
+    outline: 1px solid var(--Linear-Gradient-End);
+}
+
+.component .cardsGrid .card:nth-child(2) .linkBtn {
+    background: white;
+    color: var(--Linear-Gradient-End);
+    outline: 1px solid white;
+}
+
+.component .cardsGrid .card:nth-child(2) .linkBtn:hover{
+    background-color: transparent;
+    color: white;
+}
+
+@media (max-width: 760px){
+    img{
+        position: fixed;
+    }
+    .component h1{
+        padding-top: 3rem;
+    }
+    .component .toggleContainer{
+        margin-bottom: 5rem;
+    }
+    .component .cardsGrid .card:nth-child(2){
+        padding: 1.5rem;
+    }
+    .component .cardsGrid{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
